@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author aslih
- *
- */
-module isletim {
-}
