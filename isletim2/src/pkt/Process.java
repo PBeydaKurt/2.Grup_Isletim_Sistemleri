@@ -1,78 +1,76 @@
 package pkt;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.Random;
 public class Process {
-    int id;
-    int arrivetime;
-    int runtime;
+    public static Program dl = null;
+    int ID;
+    int arrivingTime;
+    int runTime;
     int priority;
-    int flag;
-    int overtime;
-    public int isFlag() {
-        return flag;
+    int overTime;
+    int delay;
+
+
+    public int getOverTime() {
+        return overTime;
     }
 
-    public void setFlag(int flag) {
-        this.flag = flag;
-    }
-
-    public int getOvertime() {
-        return overtime;
-    }
-
-    public void setOvertime(int overTime) {
-        this.overtime = overTime;
+    public void setOverTime(int overTime) {
+        this.overTime = overTime;
     }
 
 
-    public int getArrivetime() {
-        return arrivetime;
+    public int getArrivingTime() {
+        return arrivingTime;
     }
 
     @Override
     public String toString() {
-        return "process [Id=" + id + ", Arrive Time=" + arrivetime + ", Run Time=" + runtime + ", Priority="
-                + priority +", flag="+ flag + ", Over Time="+ overtime + "]";
+        return "process [Id=" + ID + ", arrivingTime=" + arrivingTime + ", runTime=" + runTime + ", priority="
+                + priority + ", overTime="+ overTime + "]";
+    }
+    public void setArrivingTime(int arrivingTime) {
+        this.arrivingTime = arrivingTime;
     }
 
-    public void setArrivetime(int arriveTime) {
-        this.arrivetime = arriveTime;
+    public int getRunTime() {
+        return runTime;
     }
 
-    public int getRuntime() {
-        return runtime;
-    }
-
-    public void setRuntime(int runTime) {
-        this.runtime = runTime;
+    public void setRunTime(int runTime) {
+        this.runTime = runTime;
     }
 
     public int getPriority() {
         return priority;
     }
 
-    public void setPriority(int Priority) {
-        this.priority = Priority;
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public int getId() {
-        return id;
+        return ID;
     }
 
-    public void setId(int Id) {
-        id = Id;
+    public void setId(int id) {
+        ID = id;
     }
 
     public Process (int[] array ){
 
-
-        this.id=array[0];
-        this.arrivetime=array[1];
+        this.ID=array[0];
+        this.arrivingTime=array[1];
         this.priority=array[2];
-        this.runtime=array[3];
-        this.flag = array[4];
-        this.overtime = array[5];
-
+        this.runTime=array[3];
+        this.overTime = array[4];
+    }
+    public void process() throws IOException {
 
     }
-
 }
+
