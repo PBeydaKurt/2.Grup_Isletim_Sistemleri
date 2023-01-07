@@ -1,4 +1,5 @@
-package pkt;
+package project;
+
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -33,4 +34,3 @@ public class Queue {
     }
 
 }
-

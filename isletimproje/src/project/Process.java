@@ -1,12 +1,13 @@
-package pkt;
+package project;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Random;
+
 public class Process {
-    public static Program dl = null;
+    
     int ID;
     int arrivingTime;
     int runTime;
@@ -69,8 +70,5 @@ public class Process {
         this.runTime=array[3];
         this.overTime = array[4];
     }
-    public void process() throws IOException {
-
-    }
+    
 }
-
