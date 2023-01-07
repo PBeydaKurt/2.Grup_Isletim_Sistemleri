@@ -59,7 +59,7 @@ public class Program {
 
                 }
 
-            } // for bitis //time'a gore degerler atanıyor.
+            } // for bitis //time'a gore degerler atan�yor.
 
             if (!(fcfs.queue.isQueueEmpty())) {
                 int fcfs_ExecTime = fcfs.FCFS(timer);
@@ -82,18 +82,11 @@ public class Program {
         String text = "";
         for (int i = 0; i < fcfs.queue.QueueSize(); i++) {// fcfs checking
             Process process = fcfs.queue.Pull(i);
-            if (time - process.delay >= 20)// zaman aşımı oldu
+            if (time - process.delay >= 20)// zaman a��m� oldu
             {
-                Random rng = new Random();
-
-                // Rastgele RGB renkleri oluşturma
-                int r = rng.nextInt(256);
-                int g = rng.nextInt(256);
-                int b = rng.nextInt(256);
-
                 text = String.format(
-                        "\033[38;2;%d;%d;%dm%d sn proses zamanasimi      (id: %2d   oncelik:%2d  kalan sure:%2d sn)\033[0m",
-                        r, g, b, process.delay, process.ID, process.priority, process.overTime);
+                        "\033[38;2;%d;%d;%dm%d sn process over time      (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
+                        process.delay, process.ID, process.priority, process.overTime);
 
                 System.out.println(text);
 
@@ -103,18 +96,11 @@ public class Program {
         }
         for (int i = 0; i < fpl.queue1.QueueSize(); i++) {// firstPriorityList checking
             Process process = fpl.queue1.Pull(i);
-            if (time - process.delay >= 20)// zaman aşımı oldu
+            if (time - process.delay >= 20)// zaman a��m� oldu
             {
-                Random rng = new Random();
-
-                // Rastgele RGB renkleri oluşturma
-                int r = rng.nextInt(256);
-                int g = rng.nextInt(256);
-                int b = rng.nextInt(256);
-
                 text = String.format(
-                        "\033[38;2;%d;%d;%dm%d sn proses zamanasimi      (id: %2d   oncelik:%2d  kalan sure:%2d sn)\033[0m",
-                        r, g, b, process.delay, process.ID, process.priority, process.overTime);
+                        "\033[38;2;%d;%d;%dm%d sn proses zamanasimi      (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
+                        process.delay, process.ID, process.priority, process.overTime);
 
                 System.out.println(text);
 
@@ -124,18 +110,11 @@ public class Program {
         }
         for (int i = 0; i < spl.queue2.QueueSize(); i++) {// secondPriorityList checking
             Process process = spl.queue2.Pull(i);
-            if (time - process.delay >= 20)// zaman aşımı oldu
+            if (time - process.delay >= 20)// zaman a��m� oldu
             {
-                Random rng = new Random();
-
-                // Rastgele RGB renkleri oluşturma
-                int r = rng.nextInt(256);
-                int g = rng.nextInt(256);
-                int b = rng.nextInt(256);
-
                 text = String.format(
-                        "\033[38;2;%d;%d;%dm%d sn proses zamanasimi      (id: %2d   oncelik:%2d  kalan sure:%2d sn)\033[0m",
-                        r, g, b, process.delay, process.ID, process.priority, process.overTime);
+                        "\033[38;2;%d;%d;%dm%d sn process over time      (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
+                        process.delay, process.ID, process.priority, process.overTime);
 
                 System.out.println(text);
 
@@ -145,18 +124,12 @@ public class Program {
         }
         for (int i = 0; i < rr.queue.QueueSize(); i++) {// Round-Robin checking
             Process process = rr.queue.Pull(i);
-            if (time - process.delay >= 20)// zaman aşımı oldu
+            if (time - process.delay >= 20)// zaman a��m� oldu
             {
-                Random rng = new Random();
-
-                // Rastgele RGB renkleri oluşturma
-                int r = rng.nextInt(256);
-                int g = rng.nextInt(256);
-                int b = rng.nextInt(256);
 
                 text = String.format(
-                        "\033[38;2;%d;%d;%dm%d sn proses zamanasimi      (id: %2d   oncelik:%2d  kalan sure:%2d sn)\033[0m",
-                        r, g, b, process.delay, process.ID, process.priority, process.overTime);
+                        "\033[38;2;%d;%d;%dm%d sn process over time      (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
+                       process.delay, process.ID, process.priority, process.overTime);
 
                 System.out.println(text);
 
@@ -166,4 +139,6 @@ public class Program {
         }
 
     }
+
+
 }
