@@ -4,7 +4,7 @@
 **Projenin Konusu:** <br/>
 `Proje ödevimize konu olan sistem sınırlı kullanılabilir kaynakların kısıtlamaları içinde çalışan dört seviyeli
 öncelikli proses görevlendiricisine sahip bir çoklu programlama sistemidir.` <br/>
-**Proje İçeriği** <br/>
+
 
 **Grup Üyeleri** <br/>
 *1-* Aslıhan Akbulut   1/C G201210080 <br/>
