@@ -18,51 +18,51 @@ public class File {
 
 		List<String> allLines = Files.readAllLines(Paths.get("./giris.txt"));// dosyadaki satirlari listede
 																						// tutacak
-		int idSayac = 0; // itemlere id atamak için tutulan sayaç
+		int idCounter = 0; // itemlere id atamak için tutulan sayaç
 
 		for (int i = 0; i < allLines.size(); i++) { // tüm satırları gezmemizi sağlıyor
 
-			String satir = allLines.get(i);// ilk satir alindi
+			String line = allLines.get(i);// ilk satir alindi
 
 			Process process = new Process(null); // her satır için bir item
 
-			int sayac = -1;// satirdaki verileri varis, oncelik ve burst time'a gore ayiriyor.
+			int counter = -1;// satirdaki verileri varis, oncelik ve burst time'a gore ayiriyor.
 
-			String veri = "";// satirdaki verileri almaya yariyor
+			String data = "";// satirdaki verileri almaya yariyor
 
-			for (int j = 0; j < satir.length(); j++) {
-				char ch = satir.charAt(j);// satiri tek tek gezmeyi sagliyor
+			for (int j = 0; j < line.length(); j++) {
+				char ch = line.charAt(j);// satiri tek tek gezmeyi sagliyor
 
 				if (ch == ' ')
 					continue;
 
-				else if (j == satir.length() - 1) {// son satirdaki veriyi de almayi sagliyor ve ilgili Item degerine
+				else if (j == line.length() - 1) {// son satirdaki veriyi de almayi sagliyor ve ilgili Item degerine
 													// atamayi sagliyor
-					veri += ch;
-					process.overTime = Integer.parseInt(veri);
+					data += ch;
+					process.overTime = Integer.parseInt(data);
 
 				} else if (ch != ',') {// verileri veri nesnesine atamayi sagliyor ve verileri ayirmayi sagliyor
-					veri += ch;
+					data += ch;
 
 				} else {// alinan verileri ilgili Item degerlerine atiyor
 
-					sayac++;
-					switch (sayac) {
+					counter++;
+					switch (counter) {
 					case 0:
-						process.arrivingTime = Integer.parseInt(veri);
+						process.arrivingTime = Integer.parseInt(data);
 						break;
 					case 1:
-						process.priority = Integer.parseInt(veri);
+						process.priority = Integer.parseInt(data);
 						break;
 					}
 
-					veri = ""; //veri stringini sıfırlıyor
+					data = ""; //veri stringini sıfırlıyor
 				}
 			}// bir satirdaki verileri ayırdık ve Item classına atadık
 			
-			process.ID = idSayac; //id ataması
+			process.ID = idCounter; //id ataması
 			
-			idSayac++;
+			idCounter++;
 			
 			process.delay = process.arrivingTime; //itemlere default askıya alınma zamanı atıyor (varış zamanı)
 			
