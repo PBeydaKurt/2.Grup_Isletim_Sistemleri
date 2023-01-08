@@ -1,15 +1,17 @@
 package project;
 
+import java.io.File;
 import java.io.IOException;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		Program pr = new Program();
+		
+		File file = new File("giris.txt");
 
-		File p = new File(pr);
+		ProcessBuilder p = new ProcessBuilder(file);
 
-		p.reader();
+		p.start();
 
 	}
 

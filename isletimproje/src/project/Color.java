@@ -88,5 +88,3 @@ import java.util.ArrayList;
 	        return colors.remove(0);
 	    }
 	}
-
-

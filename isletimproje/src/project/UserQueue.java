@@ -1,29 +1,26 @@
 package project;
 
 public class UserQueue {
-	Queue qu = new Queue();
+	Queue queue = new Queue();
 
 	void UserAdd(Process process) {
-		qu.PushQueue(process);
+		queue.PushQueue(process);
 	}
 	
-	void UserProgram()
+	void UserProgram() //dispatchList'ten gelen prosesleri önceliklerine göre ilgili kuyruklara gönderiyor
 	{
-		Program prog = File.prog;
+		Program pr = ProcessBuilder.pr;
 		
-		while(!qu.isQueueEmpty())
+		while(!queue.isQueueEmpty())
 		{
-			if (qu.Pull(0).priority == 2) 
-			{
-				prog.spl.queue2.PushQueue(qu.PopQueue());
-			} else if (qu.Pull(0).priority == 1) 
-			{
-				prog.fpl.queue1.PushQueue(qu.PopQueue());
-			} else 
-			{
-				prog.rr.qu.PushQueue(qu.PopQueue());
+			if (queue.Pull(0).priority == 1) {
+				pr.fpl.queue1.PushQueue(queue.PopQueue());
+			} else if (queue.Pull(0).priority == 2) {
+				pr.spl.queue2.PushQueue(queue.PopQueue());
+			} else {
+				pr.rr.queue.PushQueue(queue.PopQueue());
 			}
 		}
 		
 	}
-} 
+}

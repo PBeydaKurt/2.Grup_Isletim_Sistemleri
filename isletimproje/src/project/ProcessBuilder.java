@@ -4,18 +4,19 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.List;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class ProcessBuilder {
 
-    private static userQueue<PriorityList> userQueueProcess;//işlem listesi
+    private static UserQueue<PriorityList> userQueueProcess;//işlem listesi
     private static int time = 0;//süre
     private static int id = 0;//id
     public static Program pr = null;
     private static Color color;//renk sınıfı
 
     public ProcessBuilder(File file) {
-        userQueueProcess = new userQueue<>(50);//50 elemanlı liste oluşturuldu
+        userQueueProcess = new UserQueue<>(50);//50 elemanlı liste oluşturuldu
         readFile(file);//dosya okundu
         color = new Color();
     }
