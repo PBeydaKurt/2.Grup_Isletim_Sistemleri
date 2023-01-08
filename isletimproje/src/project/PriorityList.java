@@ -7,7 +7,7 @@ public class PriorityList {
     Queue queue2 = new Queue();
 
     int FirstPriList(int time) {
-        //timer that will go to main (will be adding)
+
 
         Program dl;
 
@@ -19,7 +19,7 @@ public class PriorityList {
         text = String.format(
                 "\033[38;2;%d;%d;%dm%2d sn process started         (id: %2d   priority:%2d  overtime:%2d sn)\033[0m",
                 (time + timer), process.ID, process.priority, process.overTime);
-        //print text in color
+
         System.out.println(text);
 
         timer++;
@@ -34,7 +34,7 @@ public class PriorityList {
             text = String.format(
                     "\033[38;2;%d;%d;%dm%2d sn process is waiting          (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                     (time + timer), process.ID, process.priority, process.overTime);
-            //print text in color
+
             System.out.println(text);
              queue2.PushQueue(process);
 
@@ -42,7 +42,7 @@ public class PriorityList {
             text = String.format(
                     "\033[38;2;%d;%d;%dm%2d sn process ended        (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                     (time + timer), process.ID, process.priority, process.overTime);
-            //print text in color
+
             System.out.println(text);
         }
 
@@ -63,7 +63,7 @@ public class PriorityList {
         text = String.format(
                 "\033[38;2;%d;%d;%dm%2d sn process started         (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                 (time + timer), process.ID, process.priority, process.overTime);
-        //print text in color
+
         System.out.println(text);
 
         timer++;
@@ -80,14 +80,14 @@ public class PriorityList {
             text = String.format(
                     "\033[38;2;%d;%d;%dm%2d sn process is waiting          (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                     (time + timer), process.ID, process.priority, process.overTime);
-            //print text in color
+
             System.out.println(text);
 
         } else {
             text = String.format(
                     "\033[38;2;%d;%d;%dm%2d sn process ended        (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                     (time + timer), process.ID, process.priority, process.overTime);
-            //print text in color
+
             System.out.println(text);
         }
 

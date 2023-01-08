@@ -35,11 +35,11 @@ public class Program {
                 if (queue.QueueSize() == 0)
                     break;
                 if (queue.Pull(0).arrivingTime > timer) {
-                    // System.out.println("arriving: "+dispatchList.get(0).arriving+" timer:
+                    // System.out.println("varis: "+dispatchList.get(0).varis+" timer:
                     // "+damn_timer);
                     break;
                 } else if (queue.Pull(0).priority == 0) {// <=!!!
-                    // System.out.println("arriving: "+dispatchList.get(0).arriving);
+                    // System.out.println("varis: "+dispatchList.get(0).varis);
                     fcfs.queue.PushQueue(queue.PopQueue());
                     processCount++;
                     // System.out.println(damn_timer);
@@ -59,7 +59,7 @@ public class Program {
 
                 }
 
-            } // end of for //values are assigned according to time.
+            } // for bitis //time'a gore degerler ataniyor.
 
             if (!(fcfs.queue.isQueueEmpty())) {
                 int fcfs_ExecTime = fcfs.FCFS(timer);
@@ -82,7 +82,7 @@ public class Program {
         String text = "";
         for (int i = 0; i < fcfs.queue.QueueSize(); i++) {// fcfs checking
             Process process = fcfs.queue.Pull(i);
-            if (time - process.delay >= 20)// time out
+            if (time - process.delay >= 20)// zaman asimi oldu
             {
                 text = String.format(
                         "\033[38;2;%d;%d;%dm%d sn process over time      (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
@@ -96,10 +96,10 @@ public class Program {
         }
         for (int i = 0; i < fpl.queue1.QueueSize(); i++) {// firstPriorityList checking
             Process process = fpl.queue1.Pull(i);
-            if (time - process.delay >= 20)// time out
+            if (time - process.delay >= 20)// zaman asimi oldu
             {
                 text = String.format(
-                        "\033[38;2;%d;%d;%dm%d sn proses over time     (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
+                        "\033[38;2;%d;%d;%dm%d sn proses zamanasimi      (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                         process.delay, process.ID, process.priority, process.overTime);
 
                 System.out.println(text);
@@ -110,7 +110,7 @@ public class Program {
         }
         for (int i = 0; i < spl.queue2.QueueSize(); i++) {// secondPriorityList checking
             Process process = spl.queue2.Pull(i);
-            if (time - process.delay >= 20)// time out
+            if (time - process.delay >= 20)// zaman asimi oldu
             {
                 text = String.format(
                         "\033[38;2;%d;%d;%dm%d sn process over time      (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
@@ -122,9 +122,9 @@ public class Program {
                 i--;
             }
         }
-        for (int i = 0; i < rr.queue.QueueSize(); i++) {// Round-robin checking
+        for (int i = 0; i < rr.queue.QueueSize(); i++) {// Round-Robin checking
             Process process = rr.queue.Pull(i);
-            if (time - process.delay >= 20)// time out
+            if (time - process.delay >= 20)// zaman asimi oldu
             {
 
                 text = String.format(
@@ -139,5 +139,6 @@ public class Program {
         }
 
     }
+
 
 }

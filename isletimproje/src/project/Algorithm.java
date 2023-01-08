@@ -7,7 +7,6 @@ public class Algorithm {
     Process item = null;
 
     int RoundRobin(int time) {
-        //timer that will go to main (will be adding)
 
         Program dl;
         String text = "";
@@ -30,7 +29,7 @@ public class Algorithm {
             text = String.format(
                     "\033[38;2;%d;%d;%dm%2d sn process ended       (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                     (time + timer), process.ID, process.priority, process.overTime);
-            //print text in color
+
             System.out.println(text);
 
             queue.PopQueue(counter);
@@ -41,7 +40,7 @@ public class Algorithm {
             text = String.format(
                     "\033[38;2;%d;%d;%dm%2d sn process is waiting        (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                     (time + timer), process.ID, process.priority, process.overTime);
-            //print text in color
+
             System.out.println(text);
 
             counter = (counter + 1) % queue.QueueSize();
@@ -51,7 +50,6 @@ public class Algorithm {
     }
 
     int FCFS(int time) {
-        //timer that will go to main (will be adding)
 
         Program dl;
 
@@ -62,7 +60,7 @@ public class Algorithm {
         text = String.format(
                 "\033[38;2;%d;%d;%dm%2d sn process started       (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                 (time + timer), process.ID, process.priority, process.overTime);
-        //print text in color
+
         System.out.println(text);
 
         while (process.overTime != 0) {
@@ -81,7 +79,7 @@ public class Algorithm {
                 text = String.format(
                         "\033[38;2;%d;%d;%dm%2d sn process ended        (id: %2d   priority:%2d  over time:%2d sn)\033[0m",
                         (time + timer), process.ID, process.priority, process.overTime);
-            //print text in color
+
             System.out.println(text);
 
             //dl.TimeOut_Scanner(time + timer);
