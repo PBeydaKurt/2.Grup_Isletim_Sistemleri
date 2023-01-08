@@ -8,11 +8,11 @@ import java.nio.file.Paths;
 
 public class ProcessBuilder {
 
-    private static userQueue<Process> userQueueProcess;//işlem listesi
-    private static Color color;//renk sınıfı
+    private static userQueue<PriorityList> userQueueProcess;//işlem listesi
     private static int time = 0;//süre
     private static int id = 0;//id
     public static Program pr = null;
+    private static Color color;//renk sınıfı
 
     public ProcessBuilder(File file) {
         userQueueProcess = new userQueue<>(50);//50 elemanlı liste oluşturuldu
@@ -23,7 +23,7 @@ public class ProcessBuilder {
     public static void start() {
 
         while (!userQueueProcess.isEmpty()) {
-            execute(userQueueProcess.dequeue(), color.getColor());//işlemler listeden sırayla çıkartılıp işlenmek üzere gönderiliyor
+            execute(userQueueProcess.dequeue(), color.getColor());  //işlemler sırasına göre prosesleri işlenmek üzere işleme girer.
             color.getColor();
             id++;
             if (time > 20) {//20 saniye limiti
@@ -33,24 +33,25 @@ public class ProcessBuilder {
 
     }
 
-    private static void execute(Process process, String colors) {//işlemlerin işlendiği metot
+    private static void execute(PriorityList priorityListprocess, String colors) {
+        //işlemlerin gerçekleştiği metot
 
-        int len = process.getProcessTime();
+        int len = priorityListprocess.getProcessTime();
 
         for (int i = len; i>= 0;i--) {
             if (i == len) {
-                System.out.println(colors +time + "sn proses başladı. (id: 000"+ id+ " öncelik: "+process.getPriority()+" kalan süre:"+ process.getProcessTime());
+                System.out.println(colors +time + "sn proses başladı. (id: 000"+ id+ " öncelik: "+priorityListprocess.getPriority()+" kalan süre:"+ priorityListprocess.getProcessTime());
             } else if (i == 0) {
-                System.out.println(colors +time + "sn proses sonlandı. (id: 000"+ id+ " öncelik: "+process.getPriority()+" kalan süre:"+ process.getProcessTime());
+                System.out.println(colors +time + "sn proses sonlandı. (id: 000"+ id+ " öncelik: "+priorityListprocess.getPriority()+" kalan süre:"+ priorityListprocess.getProcessTime());
             } else {
-                System.out.println(colors +time + "sn proses yürütülüyor. (id: 000"+ id+ " öncelik: "+process.getPriority()+" kalan süre:"+ process.getProcessTime()+")");
+                System.out.println(colors +time + "sn proses yürütülüyor. (id: 000"+ id+ " öncelik: "+priorityListprocess.getPriority()+" kalan süre:"+ priorityListprocess.getProcessTime()+")");
             }
             time++;
             if (time > 20) {// 20 saniye limiti
                 System.out.println("SÜRE DOLDU");
                 break;
             }
-            process.setProcessTime(process.getProcessTime() - 1);//her saniye geçtikten sonra işlenen süre işlem süresinden düşürülüyor
+            process.setProcessTime(priorityListprocess.getProcessTime() - 1);//her saniye geçtikten sonra işlenen süre işlem süresinden düşürülüyor
         }
 
 
@@ -58,7 +59,7 @@ public class ProcessBuilder {
 
     public static void printList() {//test emek için oluşturulmuş ekleme metodu
         for (int i = 0; i < userQueueProcess.getCurrentSize(); i++) {
-            Process item = userQueueProcess.dequeue();
+            PriorityList item = userQueueProcess.dequeue();
             System.out.println("Arrival Time: " +item.getArrivalTime() +" Priority: "+item.getPriority() + " Process Time: " +item.getProcessTime());
         }
     }
