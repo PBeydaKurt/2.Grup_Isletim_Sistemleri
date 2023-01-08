@@ -65,59 +65,69 @@ public class ProcessBuilder {
     }
 
     public void readFile(File file) throws IOException {
-        List<String> allLines = Files.readAllLines(Paths.get("./giris.txt"));// dosyadaki satirlari listede
-        // tutacak
-        int idCounter = 0; // itemlere id atamak için tutulan sayaç
+        List<String> lines = Files.readAllLines(Paths.get("./giris.txt"));
+		int counterID = 0; // id atanıyor
+		for (int i = 0; i < lines.size(); i++) { 
+ 		// satırların hepsine bakılıyor
 
-        for (int i = 0; i < allLines.size(); i++) { // tüm satırları gezmemizi sağlıyor
+			String line = lines.get(i);
+		// 1.satır get metoduyla alınıyor
 
-            String line = allLines.get(i);// ilk satir alindi
+			Process pr = new Process(null); 
+		// tüm satırlar için atama yapılıyor
 
-            Process process = new Process(null); // her satır için bir item
+			int counter = -1;
 
-            int counter = -1;// satirdaki verileri varis, oncelik ve burst time'a gore ayiriyor.
+			String data = "";
+		// veriler geliyor
 
-            String data = "";// satirdaki verileri almaya yariyor
+			for (int a = 0; a < line.length(); a++) {
+				char b = line.charAt(a);
 
-            for (int j = 0; j < line.length(); j++) {
-                char ch = line.charAt(j);// satiri tek tek gezmeyi sagliyor
+				if (b == ' ')
+					continue;
 
-                if (ch == ' ')
-                    continue;
+				 else if (b != ',') {
+		// veriler atanıyor
+					data += b;
 
-                else if (j == line.length() - 1) {// son satirdaki veriyi de almayi sagliyor ve ilgili Item degerine
-                    // atamayi sagliyor
-                    data += ch;
-                    process.overTime = Integer.parseInt(data);
+				} 
+		else if (a == line.length() - 1) 
+		{
+		// en son satırın verisi alınıyor ataması yapılıyor
+													
+			
+					data += b;
+					pr.overTime = Integer.parseInt(data);
 
-                } else if (ch != ',') {// verileri veri nesnesine atamayi sagliyor ve verileri ayirmayi sagliyor
-                    data += ch;
+				}else 
+			{
+		// alinan verilere değer atanıyor
+					counter++;
+					if(counter==0)
+		{
+						pr.arrivingTime = Integer.parseInt(data);
+						}
+					else if(counter==1){
+						pr.priority = Integer.parseInt(data);
+						}	
+					}
 
-                } else {// alinan verileri ilgili Item degerlerine atiyor
-
-                    counter++;
-                    switch (counter) {
-                        case 0:
-                            process.arrivingTime = Integer.parseInt(data);
-                            break;
-                        case 1:
-                            process.priority = Integer.parseInt(data);
-                            break;
-                    }
-
-                    data = ""; //veri stringini sıfırlıyor
-                }
-            }// bir satirdaki verileri ayırdık ve Item classına atadık
-
-            process.ID = idCounter; //id ataması
-
-            idCounter++;
-
-            process.delay = process.arrivingTime; //itemlere default askıya alınma zamanı atıyor (varış zamanı)
-
-
-            pr.AddtoList(process);
-        }//tüm atama işlemleri bitti. dispatchList dolu
-        pr.DpProgram();
+					data = ""; data boş hale getiriliyor
+				}
+			}
+			
+			pr.ID = counterID; 
+		//id atanıyor
+			
+			counterID++;
+			
+			pr.delay = pr.arrivingTime; 
+		//varış zamanı atanıyor
+			
+			
+			prog.AddtoList(pr);
+		}//atama sonlandı
+		prog.DpProgram();
     }
 }
